@@ -22,19 +22,41 @@ int[] CreateArrayRndInt(int size, int max, int min) // Создаем Метод
 
 void PriintArray(int[] arr)
 {
-    //Console.Write("["); // Перед началом Цикла выводим квадратную скобку -> для вывода как в условии
+    Console.Write("["); // Перед началом Цикла выводим квадратную скобку -> для вывода как в условии
     for (int i = 0; i < arr.Length; i++) // Условие цикла i < arr.Length (свойства массива)
     {
-        if(i< arr.Length -1) Console.Write($"{arr[i]}, "); // Если индекс элемента меньше длинны Массива
+        if (i < arr.Length - 1) Console.Write($"{arr[i]}, "); // Если индекс элемента меньше длинны Массива
         // i< arr.Length -1, то выводим {arr[i]}, - (значение с запятой). Либо через дополнительный параметр
         // в Методе PrintArray можем выводить любые символы - Например (char simb = !) и вызвать {simb}
         else Console.Write($"{arr[i]}"); // Выводим элементы Массива без запятой - {arr[i]}
     }
-    //Console.WriteLine("]"); // После окончания Цикла выводим квадратную скобку -> для вывода как в условии
+    Console.WriteLine("]"); // После окончания Цикла выводим квадратную скобку -> для вывода как в условии
+}
+
+int[] GetSumPositivNegativElem(int[] arr) // Создаем Метод и передаем в него (объект)-Массив 
+{
+    int sumPositiv = 0; // Инициируем переменную для суммы положительных чисел
+    int sumNegativ = 0; // Инициируем переменную для суммы отрицательных чисел
+    for (int i = 0; i < arr.Length; i++)
+    {
+        if (arr[i] > 0) // Если элемент Массива arr[i] < 0
+        {
+            sumPositiv = sumPositiv + arr[i]; // то делай ээто (прибавляй элемент arr[i] к sumPositiv)
+        }
+        else sumNegativ = sumNegativ + arr[i]; // иначе делай это (прибавляй элемент arr[i] к sumNegativ)
+    }
+    return new int[] { sumPositiv, sumNegativ }; // СОЗДАЕМ и Возвращаем Массив. Без указание длинны. 
+    // Элементы (значения) в фигурных скобках.
 }
 
 int[] array = CreateArrayRndInt(12, 9, -9); // Вызываем Метод для int[] array
 PriintArray(array); // Выводим в Консоль
-Console.Write(" -> [");
-PriintArray(array);
-Console.WriteLine("]"); // Для вывода как в домашней задаче!
+// Console.Write(" -> [");
+// PriintArray(array);
+// Console.WriteLine("]"); // Для вывода как в домашней задаче!
+
+int[] getSumPositivNegativElem = GetSumPositivNegativElem(array); // Присваиваем Массиву результат Метода
+Console.WriteLine($"Сумма положительных элементов массива => {getSumPositivNegativElem[0]}"); 
+// Выводим в консоль нулевой элемент массива getSumPositivNegativElem[0] - сумма положительных чисел
+Console.WriteLine($"Сумма отрицательных элементов массива => {getSumPositivNegativElem[1]}"); 
+// Выводим в консоль первый элемент массива getSumPositivNegativElem[1] - сумма отрицательных чисел
