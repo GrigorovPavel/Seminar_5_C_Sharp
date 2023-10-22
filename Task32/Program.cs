@@ -25,7 +25,7 @@ void PriintArray(int[] arr)
     Console.WriteLine("]"); 
 }
 
-void InversArray(int[] arr)
+void InversArray(int[] arr) // Метод заменяет положительные элементы Массива на отрицательные и наоборот
 {
     for (int i = 0; i < arr.Length; i++)
     {
